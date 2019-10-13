@@ -1,14 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import { TouchableOpacity, Dimensions, View, Image } from 'react-native';
+import { TouchableOpacity, Dimensions, View, Image, Platform } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import { Transition } from 'react-navigation-fluid-transitions';
 import { useStoreActions } from 'easy-peasy';
 import moment from 'moment';
+import Constants from 'expo-constants';
 
 import getFurnitureData from '../furnitureData';
 import Message from './Message';
 import getValueColor from '../utils/getValueColor';
 import fetchApi from '../utils/fetchApi';
+
+const isiPhoneX = Platform.OS == 'ios' && (
+  Constants.platform.ios.model.toLowerCase().includes('iphone x') ||
+  Constants.deviceName.toLowerCase().includes('iphone x')
+);
+const footerSpaceHeight = isiPhoneX ? 34 : 0;
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get('window');
 
@@ -17,7 +24,7 @@ function wp (percentage) {
   return Math.round(value);
 }
 
-export const slideHeight = HEIGHT - 180;
+export const slideHeight = HEIGHT - 180 - footerSpaceHeight;
 const slideWidth = wp(80);
 const itemHorizontalMargin = wp(2);
 

@@ -7,15 +7,15 @@ import shortid from 'shortid';
 
 import getRandomFurniture from '../utils/getRandomFurniture';
 import getFurnitureData from '../furnitureData';
+import { slideHeight } from './CarouselItem';
 
-const { width: WIDTH, height: HEIGHT } = Dimensions.get('window');
+const { width: WIDTH } = Dimensions.get('window');
 
 function wp (percentage) {
   const value = (percentage * WIDTH) / 100;
   return Math.round(value);
 }
 
-export const slideHeight = HEIGHT - 180;
 const slideWidth = wp(80);
 const itemHorizontalMargin = wp(2);
 
