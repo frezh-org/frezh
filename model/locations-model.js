@@ -1,7 +1,5 @@
 import { action } from 'easy-peasy';
 
-import getRandomFurniture from '../utils/getRandomFurniture';
-
 const locationsModel = {
   items: [],
   userLocation: {
